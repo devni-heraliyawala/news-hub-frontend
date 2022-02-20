@@ -18,7 +18,7 @@ const ListItem = (props) => {
       <div className="cover-photo-wrapper">
         <img
           className="cover-photo"
-          src={item?.urlToImage ? item?.urlToImage : "/default-placeholder.png"}
+          src={item?.urlToImage ? item?.urlToImage : handleImageError}
           alt="Article img"
           onError={() => console.log("Image error")}
         />
