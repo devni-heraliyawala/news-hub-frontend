@@ -13,14 +13,18 @@ Main features implemented are;
 - Retrieve articles according to the filter criterias
 - Import favourite articles
 - Display a detailed view of a imported article
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Video demonstration
+**[Watch the Video]**(https://drive.google.com/file/d/1YGQ2ZkK_87r-qj2W01O3BqE_wXGU1wnJ/view?usp=sharing)
+
+
 ## Technologies and Services
 Technologies
 - [JavaScript](https://www.w3schools.com/js/default.asp) - A programming language of the Web.
 - [ReactJS](https://reactjs.org/) - Free and open-source front-end JavaScript library for building user interfaces based on UI components. 
 - [HTML](https://www.w3schools.com/html/default.asp) - A markup language for describing web documents.
-- [CSS](https://www.w3schools.com/css/default.asp) -
+- [CSS](https://www.w3schools.com/css/default.asp) - style sheet language used for describing the presentation of a document written in a markup language such as HTML.
 - [SCSS]() - contains all the features of CSS and contains more features that are not present in CSS which makes it a good choice for developers to use it.
 - [DaisyUI](https://daisyui.com/) - 
 daisyUI is a customizable Tailwind CSS component library that prevents verbose markup in frontend applications.
