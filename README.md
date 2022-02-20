@@ -13,6 +13,8 @@ Main features implemented are;
 - Retrieve articles according to the filter criterias
 - Import favourite articles
 - Display a detailed view of a imported article
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Video demonstration
