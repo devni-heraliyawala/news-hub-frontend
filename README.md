@@ -16,8 +16,8 @@ Main features implemented are;
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Video demonstration
-**[Watch the Video]**(https://drive.google.com/file/d/1YGQ2ZkK_87r-qj2W01O3BqE_wXGU1wnJ/view?usp=sharing)
 
+[![Watch the video](https://github.com/devni-heraliyawala/news-hub-backend/blob/master/Codification%20Assignment%20Video%20Thumbnail.png)](https://drive.google.com/file/d/1YGQ2ZkK_87r-qj2W01O3BqE_wXGU1wnJ/view?usp=sharing)
 
 ## Technologies and Services
 Technologies
