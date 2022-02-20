@@ -17,7 +17,7 @@ import useToast from "../src/helpers/hooks/use-toast";
 const App = () => {
   const toast = useToast();
 
-  const baseUrl = "http://localhost:3001";
+  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
 
   const sortingOptions = ["relevancy", "popularity", "publishedAt"];
   const searchTypes = ["Everything", "Top-Heading"];

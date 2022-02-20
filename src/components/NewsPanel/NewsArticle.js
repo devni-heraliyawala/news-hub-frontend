@@ -10,14 +10,14 @@ const NewsArticle = (props) => {
   return (
     <div>
       <input type="checkbox" id="news-article-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box w-180">
+      <div className="modal news-article-modal">
+        <div className="modal-box">
           <h3 className="font-bold text-center text-lg">News Article</h3>
           <br />
           <div>
             <div className="card w-100 bg-base-100 shadow-xl">
               <figure>
-                <img src={article?.urlToImage} alt="article-img" />
+                <img src={article?.urlToImage} alt="article-img" onError={() => console.log("Image error")} />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{article?.title}</h2>

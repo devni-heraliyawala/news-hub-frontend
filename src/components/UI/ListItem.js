@@ -1,5 +1,7 @@
 import moment from "moment";
 
+import { handleImageError } from "../../helpers/utils";
+
 const ListItem = (props) => {
   const item = props.item;
   const buttonLabel = props.buttonLabel;
@@ -14,13 +16,18 @@ const ListItem = (props) => {
   return (
     <div className="card card-side bg-base-100 shadow-xl news-article-list-item">
       <div className="cover-photo-wrapper">
-        <img className="cover-photo" src={item?.urlToImage} alt="Article img" />
+        <img
+          className="cover-photo"
+          src={item?.urlToImage ? item?.urlToImage : "/default-placeholder.png"}
+          alt="Article img"
+          onError={() => console.log("Image error")}
+        />
       </div>
       <div className="card-body">
         <h2 className="card-title" onClick={onClickListItem}>
           {item?.title}
         </h2>
-        <p onClick={onClickListItem}>{item?.description?.substring(0, 500)}</p>
+        <p onClick={onClickListItem}>{item?.description.substring(0, 500)}</p>
         <p onClick={onClickListItem}>
           <b>Published on </b>
           {moment(item?.publishedAt).format("YYYY-MM-DD")}

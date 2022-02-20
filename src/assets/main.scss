@@ -71,3 +71,10 @@
 .w-max-content {
     width: max-content !important;
 }
+
+.news-article-modal {
+    .modal-box {
+        max-width: 96vw;
+        width: 700px;
+    }
+}
