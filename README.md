@@ -1,80 +1,40 @@
-# News Hub Frontend
 
+# Loan Calculator Frontend
 ## Description
-This project demonstrate a simple NEWS hub feature which was given as a SSE technical test at Codification using [News API](https://newsapi.org/). (Backend only). 
+This project demonstrate a simple loan amount calculation application which was given as a SSE technical test at Eyepax IT Consulting (Pvt) Ltd(frontend only).
 
-This project is a simple application of [News API](https://newsapi.org/) for searching and retrieving live articles from all over the web. The News hub project allows users to search articles through diffrent filter criterias and import necessary articles. Users can later retrieve the imported articles via "Favourites" tab and display a detailed view of the article.
+This project is a simple application desined to manage a loan calculator with below features.
 
 Main features implemented are;
-
-- Article discovery and analysis using [Everything](https://newsapi.org/docs/endpoints/everything) endpoint.
-- Retrieve live top and breaking headlines using [Top-Headlines](https://newsapi.org/docs/endpoints/top-headlines) endpoint.
-- Retrieve publishers available on the API using [Sources](https://newsapi.org/docs/endpoints/sources) endpoint.
-- Retrieve articles according to the filter criterias
-- Import favourite articles
-- Display a detailed view of a imported article
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Video demonstration
-
-[![Watch the video](https://github.com/devni-heraliyawala/news-hub-backend/blob/master/Codification%20Assignment%20Video%20Thumbnail.png)](https://drive.google.com/file/d/1YGQ2ZkK_87r-qj2W01O3BqE_wXGU1wnJ/view?usp=sharing)
+- Support Equal monthly installment
+- Extensibility for more futuristic calculation types
 
 ## Technologies and Services
 Technologies
-- [JavaScript](https://www.w3schools.com/js/default.asp) - A programming language of the Web.
-- [ReactJS](https://reactjs.org/) - Free and open-source front-end JavaScript library for building user interfaces based on UI components. 
-- [HTML](https://www.w3schools.com/html/default.asp) - A markup language for describing web documents.
-- [CSS](https://www.w3schools.com/css/default.asp) - style sheet language used for describing the presentation of a document written in a markup language such as HTML.
-- [SCSS]() - contains all the features of CSS and contains more features that are not present in CSS which makes it a good choice for developers to use it.
-- [DaisyUI](https://daisyui.com/) - 
-daisyUI is a customizable Tailwind CSS component library that prevents verbose markup in frontend applications.
-Services
-- [News API](https://newsapi.org/) - News API is a simple HTTP REST API for searching and retrieving live articles from all over the web.
+- [.NET Core API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio) - Web API is an application programming interface for a web application or web server. It uses HTTP protocol to communicate between clients and websites to have data access. Asp.net Core web API is a cross-platform web API.
+- [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) - A lightweight, extensible, open source and cross-platform version of the popular Entity Framework data access technology.
+- [React](https://reactjs.org/) - A declarative, efficient, and flexible JavaScript library for building user interfaces
 
 ## Requirements 
-- Reaction version 17.0.2
-- Node version 16.13.2
-- NPM version 8.1.2
-- Mongo version 5.0.6
-
+- .NET 6
+- React version 17.0.2
 ## Pre-Requisites and setup
-- An API key from [News API](https://newsapi.org/account).
-- Install [Node.js](https://nodejs.org/) to your local workstation.
 - Use [NPM](https://www.npmjs.com/) to manage dependencies.
 - Use [Environment Variables]() to manage configuration inside your application. Edit the `.env.stage.dev` file accordingly.
-- News Hub frontend can be found from [here](https://github.com/devni-heraliyawala/news-hub-frontend).
-- News API backend can be found from [here](https://github.com/devni-heraliyawala/news-hub-backend).
-- Default port of `3000` is used for the backend.
-- Default port of `3001` is used for the frontend.
-- NodeJS backend should be updated, configured and run successfully to start the frontend properly.
-
+- Loan calculator frontend can be found from [here](https://github.com/devni-heraliyawala/loan-calculator-frontend).
+- Loan calculator API backend can be found from [here](https://github.com/devni-heraliyawala/loan-calculator).
+- Default port `7241` is used for the backend.
+- Default port of `3000` is used for the frontend.
+- .NET core backend should be updated, configured and run successfully to start the frontend properly.
 ## Installation
 1. Clone the repo and install the dependencies.
 ```bash
-$ git clone https://github.com/devni-heraliyawala/news-hub-frontend.git
-$ cd news-hub-frontend
+$ git clone https://github.com/devni-heraliyawala/loan-calculator-frontend.git
+$ cd loan-calculator-frontend
 
 ```
 2. Install the dependencies
 ```bash
 $ npm install
 ```
-
-
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
 

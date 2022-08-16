@@ -5,54 +5,77 @@ import * as axios from "axios";
 import { Toaster } from "react-hot-toast";
 
 import Footer from "./components/Footer/Footer";
-import NewsPanel from "./components/NewsPanel/NewsPanel";
-import NewsSearch from "./components/NewsSearch/NewsSearch";
-
-import { countries } from "./constants/countries";
-import { languages } from "./constants/languages";
-import { categories } from "./constants/categories";
-
 import useToast from "../src/helpers/hooks/use-toast";
+import DropDown from "./components/UI/Dropdown";
+import Text from "./components/UI/Text";
 
 const App = () => {
   const toast = useToast();
 
-  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3000";
+  const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:5197";
 
-  const sortingOptions = ["relevancy", "popularity", "publishedAt"];
-  const searchTypes = ["Everything", "Top-Heading"];
+  const calculationTypes = ["Equal monthly installment (EMI)"];
   const defaultValues = {
-    searchType: {
-      value: "Everything",
+    calculationType: {
+      value: 1,
       isAllowedAll: false,
     },
-    favouriteList: {
-      page: 1,
-      pageLimit: 10,
-    },
+  };
+  const [selectedCalculationType, setSelectedCalculationType] = useState(
+    defaultValues.calculationType.value
+  );
+  const [selectedLoanAmount, setSelectedLoanAmount] = useState("");
+  const [selectedInterestRate, setSelectedInterestRate] = useState("");
+  const [selectedNoOfPayments, setSelectedNoOfPayments] = useState("");
+
+  const onChangeCalculationTypeHandler = (value) => {
+    setSelectedCalculationType(value);
   };
 
-  const [resultedNewsData, setResultedNewsData] = useState([]);
+  const onChangeLoanAmountHandler = (value) => {
+    setSelectedLoanAmount(value);
+  };
 
-  const TAB = Object.freeze({
-    SEARCH: 1,
-    FAVOURITES: 2,
-  });
+  const onChangeInterestRateHandler = (value) => {
+    setSelectedInterestRate(value);
+  };
 
-  const [activeTab, setActiveTab] = useState(TAB.FAVOURITES);
-  const [importedArticles, setImportedArticles] = useState([]);
-  const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
+  const onChangeNoOfPaymentsHandler = (value) => {
+    setSelectedNoOfPayments(value);
+  };
 
-  useEffect(() => {
+  const onClickCalculateHandler = (e) => {
+    e.preventDefault();
+
+    // const calculateData = {
+    //   calculationType: parseInt(selectedCalculationType),
+    //   loanAmount: Number(selectedLoanAmount),
+    //   interestRate: Number(selectedInterestRate),
+    //   noOfPayments: parseInt(selectedNoOfPayments),
+    // };
+
+    const calculateData = {
+      calculationType: 1,
+      loanAmount: 3500,
+      interestRate: 0.0067,
+      noOfPayments: 36,
+    };
+
+    console.log("data", calculateData);
+
+    // API call to calculate
     axios({
-      method: "get",
-      url: `${baseUrl}/api/news/articles/all?page=${defaultValues.favouriteList.page}&limit=${defaultValues.favouriteList.pageLimit}`,
+      method: "post",
+      url: `${baseUrl}/api/LoanCalculate`,
+      data: calculateData,
     })
       .then((response) => {
         const data = response?.data;
+        console.log("received data");
         if (data) {
-          setImportedArticles(data);
-          setIsInitialDataLoaded(true);
+          setTimeout(() => {
+            toast.info(`Monthly payemnt is ${data}`);
+          }, 500);
         }
       })
       .catch((err) => {
@@ -62,33 +85,60 @@ const App = () => {
           );
         }, 500);
       });
-  }, []);
+  };
 
-  const onNewsSearchResultsHandler = (newsResults) => {
-    setResultedNewsData(newsResults);
-    setActiveTab(parseInt(TAB.SEARCH, 10));
+  const onClickClearHandler = (e) => {
+    e.preventDefault();
+    //reset form to default values
+    setSelectedCalculationType(defaultValues.calculationType.value);
+    setSelectedLoanAmount("");
+    setSelectedInterestRate("");
+    selectedNoOfPayments("");
   };
 
   return (
     <div id="container">
-      <div className="bg-base-200 app-layout">
-        <NewsSearch
-          categories={categories}
-          languages={languages}
-          countries={countries}
-          sortingOptions={sortingOptions}
-          searchTypes={searchTypes}
-          defaultValuesNewsSearch={defaultValues}
-          onNewsResultPopulateNewsSearch={onNewsSearchResultsHandler}
+      <div className="card bg-base-100 search-panel">
+        <div className="card-body">
+          <h3 className="text-3xl font-bold">Loan Calculator</h3>
+        </div>
+
+        <DropDown
+          labelName="Calculation Type"
+          placeholder="Equal monthly installment (EMI)"
+          dropdownValues={calculationTypes}
+          value={selectedCalculationType}
+          isAllowedAllOption={defaultValues.calculationType.isAllowedAll}
+          onChangeDropdown={onChangeCalculationTypeHandler}
         />
-        {isInitialDataLoaded ? (
-          <NewsPanel
-            newsSearchResults={resultedNewsData}
-            defaultTab={activeTab}
-            baseUrl={baseUrl}
-            importedArticles={importedArticles}
-          />
-        ) : null}
+        <Text
+          labelName="Loan Amount (Principal)"
+          placeholder="3,500"
+          selectedValue={selectedLoanAmount}
+          onTextChange={onChangeLoanAmountHandler}
+        />
+        <Text
+          labelName="Interest Rate"
+          placeholder="0.67"
+          selectedValue={selectedInterestRate}
+          onTextChange={onChangeInterestRateHandler}
+        />
+        <Text
+          labelName="No of Payments"
+          placeholder="36"
+          selectedValue={selectedNoOfPayments}
+          onTextChange={onChangeNoOfPaymentsHandler}
+        />
+        <div className="form-control mt-6">
+          <button className="btn btn-primary" onClick={onClickCalculateHandler}>
+            Calculate
+          </button>
+        </div>
+        <div className="form-control mt-6">
+          <button className="btn btn-primary" onClick={onClickClearHandler}>
+            Clear
+          </button>
+        </div>
       </div>
       <Footer />
       <Toaster />
